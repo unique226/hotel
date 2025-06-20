@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="orderdiv">
+        <input type="text" id="coustumname" placeholder="NAME">
+        <br>
+       <textarea name="textbox" id="addressbox"placeholder="address with phoneno*" style="display: none;"></textarea>
+<br><br>
+       <button id="bill" >BILLOUT</button>
+    </div>
+    <div id="result" style="display: none;">
+        <p id="namee"></p>
+        <br>
+        <p id="address"></p>
+        <br>
+        <p id="cash"></p>
+    </div>
+
+</body>
+<script>
+var coustumname=document.getElementById('coustumname');
+var addressbox=document.getElementById('addressbox');
+var bill=document.getElementById('bill');
+var orderdiv=document.getElementById('orderdiv');
+var result=document.getElementById('result');
+var namee=document.getElementById('namee');
+var address=document.getElementById('address');
+var cash=document.getElementById('cash')
+const orderss=localStorage.getItem('orderss')
+
+
+bill.addEventListener('click', function () {
+    if (coustumname.value.length < 4) {
+        alert('Name must be at least 4 characters long');
+        return;
+    }
+
+    
+    addressbox.style.display = 'block';
+
+
+    if (addressbox.value.length < 10) {
+        alert('Address must be 10 or more characters');
+        return;
+    }
+
+  
+    if(bill){
+        orderdiv.style.display='none';
+        result.style.display='block';
+        namee.innerHTML=`${coustumname.value}`;
+        address.innerHTML=`${addressbox.value}`;
+        if(orderss==='chicken biryani')
+    {
+        cash.innerHTML='120'+'  is price';
+    }
+    else if(orderss==='mutton biryani'){
+        cash.innerHTML='180'+'  is price';
+    }
+    }
+});
+
+
+
+
+</script>
+</html>

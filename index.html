@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <nav id="nav1">
+            <button id="menu">MENU</button>
+            <br>
+            <button id="orders">ORDERS</button>
+            <br>
+            <input type="text" id="input1">
+            <br><button id="search">🔍</button>
+        </nav>
+    </div>
+    <div id="container">
+      <h2>BIRIYANI'S:</h2>
+      <hr>
+      <div id="food1">
+        <img src="photos/chicken biryani.jpg" width="200px" height="200px" alt=""><br>
+        CHICKEN BIRIYANI
+      </div>
+      <br><hr>
+      <div id="food2">
+        <img src="photos/mutton biryani.jpg" width="200px" height="200px"><br>MUTTON BIRIYANI
+      </div>
+      <br><hr>
+        <div id="food3">
+        <img src="photos/beef biriyani.jpg" width="200px" height="200px"><br>BEEF BIRIYANI
+      </div>
+      <br><hr>
+        <div id="food2">
+        <img src="photos/mushroom biriyani.jpg" width="200px" height="200px"><br>MUSHROOM BIRIYANI
+      </div>
+
+    </div>
+    <div id="menulist" style="top: -1105px; position: fixed; box-shadow: 0 0 4px black; width: fit-content; transition: 2s;" >
+      <button id="closemenu">x</button>
+      <br>
+      <img src="photos/menu.png" width="800px" height="540px" >
+    </div>
+    <div id="container1" style="position: fixed;"></div>
+    <button id="order" >ORDER NOW</button>
+</body>
+<script>
+
+var search=document.getElementById('search');
+    var food2=document.getElementById('food2');
+  var menu=document.getElementById('menu');
+  var menulist=document.getElementById('menulist');
+  var  container=document.getElementById('container');
+  var closemenu=document.getElementById('closemenu');
+    var container1=document.getElementById('container1');
+    container1.innerHTML='';
+    search.addEventListener('click',function(){
+        if(input1.value==='chicken biryani'|| input1.value==='CHICKEN BIRYANI'){
+           const img = document.createElement("img");
+        img.src = "photos/chicken biryani.jpg";
+        img.alt = "Chicke";
+        img.style.width = "300px";
+        container.style.display='none';
+        container1.style.display='block';
+        const button=document.createElement('button');
+        button.textContent = "ORDER NOW";
+        button.style.marginTop = "30px";
+        button.style.padding = "10px 20px";
+        button.style.cursor = "pointer";
+        button.addEventListener('click',function(){
+           window.location.href='order.html';
+          localStorage.setItem('orderss',input1.value);
+        });
+
+        container1.appendChild(img);
+        container1.appendChild(button);
+     
+        }
+          else if(input1.value==='mutton biryani'|| input1.value==='MUTTON BIRYANI'){
+           const img = document.createElement("img");
+        img.src = "photos/mutton biryani.jpg";
+        img.alt = "Chicke";
+        img.style.width = "300px";
+        container.style.display='none';
+        container1.style.display='block';
+        const button=document.createElement('button');
+        button.textContent = "ORDER NOW";
+        button.style.marginTop = "30px";
+        button.style.padding = "10px 20px";
+        button.style.cursor = "pointer";
+        button.addEventListener('click',function(){
+          window.location.href='order.html';
+          localStorage.setItem('orderss',input1.value);
+        });
+
+        container1.appendChild(img);
+        container1.appendChild(button);
+     
+        }
+
+
+
+    })
+
+    var order=document.getElementById('order');
+    order.style.display='none';
+    menu.addEventListener('click',function(){
+      menulist.style.top='1pt';
+
+    })
+    closemenu.addEventListener('click',function(){
+      menulist.style.top='-1105px';
+    })
+ 
+var orders=document.getElementById('orders');
+orders.addEventListener('click',function(){
+  const orderss=localStorage.getItem('orderss');
+  if(orderss){
+    alert('your orddder is:'+orderss)
+  }
+})
+
+
+</script>
+</html>
